@@ -1,18 +1,15 @@
 import styles from './Search.module.css';
 
-const Search = ({ onChange, value, onGetWeather }) => {
-  const valueChangeHandler = e => onChange(e.target.value);
-  const keyDownChangeHandler = e => onGetWeather(e.target.value);
-
+const Search = props => {
   return (
     <div className={styles.Search}>
       <input
         type="text"
-        className={styles.Input}
         placeholder="Enter City..."
-        onChange={valueChangeHandler}
-        value={value}
-        onKeyDown={keyDownChangeHandler}
+        className={styles.Input}
+        value={props.value}
+        onChange={e => props.setLocationHandler(e.target.value)}
+        onKeyPress={e => props.keyPressHandler(e.key)}
       />
     </div>
   );
